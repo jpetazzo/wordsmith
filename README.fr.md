@@ -81,7 +81,7 @@ Informations supplémentaires :
 
 - le serveur écoute sur le port 8080
 - pour la compilation il faut les paquetages maven et openjdk-8-jdk
-- pour l'exécution il faut le paquetage openjdk-8-jdk (maven n'est pas nécessaire)
+- pour l'exécution il faut le paquetage openjdk-8-jre (maven et openjdk-8-jdk ne sont plus nécessaires)
 
 
 ### db
