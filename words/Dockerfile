@@ -4,9 +4,18 @@ FROM ubuntu
 RUN apt-get update
 RUN apt-get install maven openjdk-8-jdk -y
 
-# Copy all the files. This is not optimal, but it
-# will do for now.
-COPY . .
+# Copy the file describing the dependencies first.
+COPY pom.xml .
+
+# Use maven to install the dependencies.
+RUN mvn verify
+
+# Now, copy the source files for our application.
+# Remember that when copying a directory, we generally
+# *do not* to do "COPY src ." otherwise the content of
+# "src" gets copied to the directory (instead of
+# creating a subdirectory named "src").
+COPY src src
 
 # Build the code. Note: this will place multiple
 # JAR files in a directory named "target". There

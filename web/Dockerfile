@@ -16,12 +16,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install golang-go -y
 
-# Copy all the files.
-# (Not the best way to do it! But it will do for now.)
-COPY . .
+# Copy only the files we need.
+# Note that when copying a directory (like "static"),
+# the *content* of the directory gets copied to the
+# target; so if we do "COPY static ." the content of
+# "static" is copied directly to the destination
+# directory (instead of being copied to a "static"
+# subdirectory).
+COPY dispatcher.go .
+COPY static static
 
 # Compile the Go program as instructed.
-
 RUN go build dispatcher.go
 
 # Using the exec syntax (JSON list of strings) makes
