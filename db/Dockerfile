@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres:alpine
 
 # The postgres official image has a "magic" entrypoint,
 # that will automatically execute scripts and load .sql

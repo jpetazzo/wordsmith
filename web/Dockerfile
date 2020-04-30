@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:alpine
 
 # Copy only the source file. We do not need the "static"
 # directory in the build phase.
@@ -8,7 +8,7 @@ COPY dispatcher.go .
 RUN go build dispatcher.go
 
 # Start a new stage.
-FROM ubuntu
+FROM alpine
 
 # Copy the binary.
 # Note that the golang image uses /go as the WORKDIR.
