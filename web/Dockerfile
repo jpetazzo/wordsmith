@@ -1,20 +1,4 @@
-FROM ubuntu
-
-# Many packages "want" some configuration information.
-# (For instance, the tzdata package wants to know in
-# which timezone we are, to set the TZ environment
-# variable accordingly.)
-# On Debian/Ubuntu, this configuration is managed by
-# debconf. The following line prevents debconf from
-# asking questions on the terminal (the default), which
-# wouldn't work in a Dockerfile, since Dockerfile must
-# not interact with the user (since there might not be
-# an user to interact with).
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Update package list, and install the Go toolchain.
-RUN apt-get update
-RUN apt-get install golang-go -y
+FROM golang
 
 # Copy only the source file. We do not need the "static"
 # directory in the build phase.
@@ -27,7 +11,8 @@ RUN go build dispatcher.go
 FROM ubuntu
 
 # Copy the binary.
-COPY --from=0 /dispatcher .
+# Note that the golang image uses /go as the WORKDIR.
+COPY --from=0 /go/dispatcher .
 
 # Copy the static directory.
 COPY static static

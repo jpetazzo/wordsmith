@@ -1,8 +1,4 @@
-FROM ubuntu
-
-# Install the JDK and Maven, as instructed.
-RUN apt-get update
-RUN apt-get install maven openjdk-8-jdk -y
+FROM maven
 
 # Copy the file describing the dependencies first.
 COPY pom.xml .
@@ -24,11 +20,7 @@ COPY src src
 RUN mvn verify
 
 # Start a new stage.
-FROM ubuntu
-
-# Install just the JRE.
-RUN apt-get update
-RUN apt-get install openjdk-8-jre -y
+FROM openjdk
 
 # Copy the "target" directory.
 COPY --from=0 /target /target
