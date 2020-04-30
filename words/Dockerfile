@@ -23,6 +23,16 @@ COPY src src
 # its dependencies.
 RUN mvn verify
 
+# Start a new stage.
+FROM ubuntu
+
+# Install just the JRE.
+RUN apt-get update
+RUN apt-get install openjdk-8-jre -y
+
+# Copy the "target" directory.
+COPY --from=0 /target /target
+
 # We use the "exec" shell built-in here, to make
 # sure that the program executes as PID 1 and
 # therefore receives signals correctly.

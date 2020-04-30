@@ -16,18 +16,21 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install golang-go -y
 
-# Copy only the files we need.
-# Note that when copying a directory (like "static"),
-# the *content* of the directory gets copied to the
-# target; so if we do "COPY static ." the content of
-# "static" is copied directly to the destination
-# directory (instead of being copied to a "static"
-# subdirectory).
+# Copy only the source file. We do not need the "static"
+# directory in the build phase.
 COPY dispatcher.go .
-COPY static static
 
 # Compile the Go program as instructed.
 RUN go build dispatcher.go
+
+# Start a new stage.
+FROM ubuntu
+
+# Copy the binary.
+COPY --from=0 /dispatcher .
+
+# Copy the static directory.
+COPY static static
 
 # Using the exec syntax (JSON list of strings) makes
 # sure that "dispatcher" will be PID 1, and will therefore
