@@ -7,6 +7,8 @@ COPY words.sql /docker-entrypoint-initdb.d/words.sql
 
 # The postgres official image requires us to either
 # set a password, or explicitly allow authentication
-# without passwords. The environment variable below
-# does the latter.
-ENV POSTGRES_HOST_AUTH_METHOD=trust
+# without passwords. We *do not* set the variable
+# below, meaning that we will *have to* provide a
+# password (using the POSTGRES_PASSWORD environment
+# variable).
+#ENV POSTGRES_HOST_AUTH_METHOD=trust

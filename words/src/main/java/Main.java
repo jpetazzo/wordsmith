@@ -22,7 +22,16 @@ public class Main {
     }
 
     private static String randomWord(String table) {
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://db:5432/postgres", "postgres", "")) {
+        String pghost = System.getenv("PGHOST");
+        if (pghost == null) pghost = "db";
+        String pgport = System.getenv("PGPORT");
+        if (pgport == null) pgport = "5432";
+        String pguser = System.getenv("PGUSER");
+        if (pguser == null) pguser = "postgres";
+        String pgpassword = System.getenv("PGPASSWORD");
+        if (pgpassword == null) pgpassword = "";
+        String url = String.format("jdbc:postgresql://%s:%s/postgres", pghost, pgport);
+        try (Connection connection = DriverManager.getConnection(url, pguser, pgpassword)) {
             try (Statement statement = connection.createStatement()) {
                 try (ResultSet set = statement.executeQuery("SELECT word FROM " + table + " ORDER BY random() LIMIT 1")) {
                     while (set.next()) {
