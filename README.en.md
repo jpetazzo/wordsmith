@@ -36,7 +36,7 @@ This will come later.
 
 ### web
 
-This is a webserver written in Go. To compile Go code, we can
+This is a web server written in Go. To compile Go code, we can
 use the `golang` official image, or install Go packages in
 any of the official base images.
 
