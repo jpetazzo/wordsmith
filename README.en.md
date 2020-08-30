@@ -1,7 +1,7 @@
 # Let's containerize the wordsmith project!
 
 
-The wordsmith project is split in 3 parts:
+The wordsmith project is split into 3 parts:
 
 - web: frontend web server written in Go
 - words: REST API written in Java, to query the DB
@@ -59,7 +59,7 @@ The web server needs to access the `static` directory. This directory
 must be a subdirectory of the current working directory when the
 server is started.
 
-Additional informations:
+Additional information:
 
 - the server listens on port 80
 - the Go compiler is only useful to build the server (not to run it)
@@ -90,7 +90,7 @@ in the directory where `words.jar` is located:
 java -Xmx8m -Xms8m -jar words.jar
 ```
 
-Additional informations:
+Additional information:
 
 - the server listens on port 8080
 - compilation requires packages `maven` and `openjdk-8-jdk`
@@ -166,9 +166,9 @@ INSERT INTO adjectives(word) VALUES
   ('the deliciøus');
 ```
 
-Additional informations:
+Additional information:
 
-- we strongly suggest to use the official PostgreSQL image that can
+- we strongly suggest using the official PostgreSQL image that can
   be found on the Docker Hub (it's called `postgres`)
 - if we check the [page of that official image](https://hub.docker.com/_/postgres) on the Docker Hub, we
   will find a lot of documentation; the section "Initialization scripts"
@@ -178,7 +178,7 @@ Additional informations:
 ## Exercise 2: Compose file
 
 When the 3 images build correctly, we can move on and write the Compose
-file. We suggest to place the Compose file at the root of the repository.
+file. We suggest placing the Compose file at the root of the repository.
 
 At this point, we want to make sure that services can communicate
 together, and that we can connect to `web`.
