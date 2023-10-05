@@ -69,7 +69,7 @@ C'est un serveur API REST en Java. Il se compile avec maven.
 Sur une distribution Debian/Ubuntu, on peut installer Java et maven comme suit :
 
 ```
-apt-get install maven openjdk-8-jdk
+apt-get install maven
 ```
 
 Voici la commande qui permet d'invoquer maven pour compiler le programme :
@@ -90,8 +90,8 @@ java -Xmx8m -Xms8m -jar words.jar
 Informations supplémentaires :
 
 - le serveur écoute sur le port 8080
-- pour la compilation il faut les paquetages maven et openjdk-8-jdk
-- pour l'exécution il faut le paquetage openjdk-8-jdk (maven n'est pas nécessaire)
+- pour la compilation il faut avoir maven et un compilateur Java (qui est généralement installé automatiquement comme dépendance quand on installe maven)
+- pour l'exécution il n'y a pas besoin du JDK (compilateur Java) mais seulement le JRE (Java Runtime Environment), qu'on peut installer sous Debian et Ubuntu via le paquetage `default-jre`
 
 
 ### db

@@ -72,7 +72,7 @@ This is a REST API backend written in Java. It should be built with maven.
 On a Debian or Ubuntu distribution, we can install Java and maven like this:
 
 ```
-apt-get install maven openjdk-8-jdk
+apt-get install maven
 ```
 
 To build the program, we can invoke maven like this:
@@ -93,8 +93,8 @@ java -Xmx8m -Xms8m -jar words.jar
 Additional information:
 
 - the server listens on port 8080
-- compilation requires packages `maven` and `openjdk-8-jdk`
-- execution requires package `openjdk-8-jdk` (`maven` is not necessary)
+- compilation requires `maven` (on most distributions, this will automatically install a JDK, which includes a Java compiler)
+- execution doesn't require `maven` or a Java compiler; only the JRE (Java Runtime Environment) is necessary, and in Debian and Ubuntu it can be provided by the `default-jre` package
 
 
 ### db
