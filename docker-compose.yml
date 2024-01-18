@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web  # Chemin vers le répertoire contenant le Dockerfile pour le service web
+    ports: 
+      - "8081:80"
+    depends_on:
+      - words
+      - db
+
+  words:
+    build: ./words  # Chemin vers le répertoire contenant le Dockerfile pour le service words
+    # Pas besoin d'exposer des ports si le service n'est pas accédé depuis l'extérieur
+
+  db:
+    build: ./db  # Chemin vers le répertoire contenant le Dockerfile pour le service db
