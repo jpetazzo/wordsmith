@@ -12,7 +12,7 @@ Le but de ces exercices est de « containeriser » cette application.
 ## Exercice 1 : Écriture de Dockerfiles
 
 Le but de l'exercice est d'écrire les Dockerfiles pour les 3 containers.
-
+test
 Commencez par faire un `git clone` du projet. Vous allez devoir
 créer un Dockerfile pour chacun des 3 services. Nous conseillons
 de placer chaque Dockerfile dans le répertoire correspondant
